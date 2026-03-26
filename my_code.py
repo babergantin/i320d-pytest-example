@@ -19,6 +19,14 @@ def test_fix_phone_num2():
   with pytest.raises(ValueError):
     fix_phone_num("555-442-98761")
     
+def test_fix_phone_num3():
+  with pytest.raises(ValueError):
+    fix_phone_num("334dfdee45")
+    
+  with pytest.raises(ValueError):
+    fix_phone_num("abcdefghij")
+    
+    
   
 
 
