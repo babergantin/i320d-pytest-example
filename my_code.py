@@ -2,11 +2,16 @@ import pytest
 
 def fix_phone_num(phone_num_to_fix):
   
+  if len(phone_num_to_fix) > 10 and phone_num_to_fix[0:2] == '+1':
+    raise ValueError("Remove the area code at the begining")  
+  
   if len(phone_num_to_fix) != 10:
     raise ValueError("Type in a 10 digit number")
   
   if phone_num_to_fix.isdigit() == False:
     raise ValueError("Type in numbers")
+  
+
   
   # given "5125558823". Split the parts, then recombine and return
   area_code = phone_num_to_fix[0:3] # 512 (first three digits)
@@ -32,6 +37,10 @@ def test_fix_phone_num3():
     
   with pytest.raises(ValueError):
     fix_phone_num("abcdefghij")
+    
+def test_fix_phone_num4():
+  with pytest.raises(ValueError):
+    fix_phone_num("+16364953398")
     
     
   
